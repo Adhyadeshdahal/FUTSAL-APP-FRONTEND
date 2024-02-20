@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Main navItems={navItems} logo={"Futsal"}></Main>
+        <Main navItems={navItems} logo={"MyFutsal"}></Main>
         <div>
           <Routes>
             <Route path="/" element={<Home/>}/>

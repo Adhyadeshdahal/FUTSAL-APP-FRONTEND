@@ -1,32 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import './home.css';
 
 export default function Home() {
+  let [cards,setCards]=useState([]);
+  const onSearchClick = ()=>{
+    setTimeout(()=>{
+      setCards([1,2,3]);
+      console.log(cards);
+    },1000)
+    
+  };
+
+
   return (
     <>
     <Carousel />
-    <SearchButton/>
+    <SearchButton click={onSearchClick}/>
     <NoOpBox/>
-    <Cards/>
-    
+    <div className='card-container'>
+      { cards.map((card) => {
+      return <Cards cardTitle={card} key={card}/>
+    })}
+    </div>
     
     </>
   );
 };
 
 
-function SearchButton() {
+function SearchButton({click}) {
+
   return (
-    <div style={{
-      position:'fixed',
-      left:"25vw",
-      right:"25vw",
-      height:"12vh",
-      background:"red",
-      width:"50vw",
-      top:"37vh"
-    }}>
-      <input type="search" placeholder='Find Futsal' style={{ width: "25vw" }} />
-      <input type="date" placeholder='01-jan-2020' style={{ width: "5vw" }} />
+    <div className="search-container">
+      <input type="search" className='search-box' placeholder='Find Futsal'/>
+      <input type="date" placeholder='01-jan-2020' className="date-input" />
+      <button type='submit' className='search-button' onClick={click} >
+        <img src='search.png' className='search-img'></img>
+      </button>
+
     </div>
   );
 }
@@ -37,12 +48,12 @@ function NoOpBox(){
   )
 }
 
-function Cards(){
+function Cards({cardTitle}){
   return(
     <div className="card" style={{width: "18rem"}}>
   <img src="..." class="card-img-top" alt="..."/>
   <div className="card-body">
-    <h5 className="card-title">Card title</h5>
+    <h5 className="card-title">{cardTitle}</h5>
     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" className="btn btn-primary">Go somewhere</a>
   </div>
@@ -53,17 +64,24 @@ function Cards(){
 
 
 function Carousel() {
+  let [id,setActiveId]=useState(0);
+  useEffect(()=>{
+    setTimeout(()=>{
+      setActiveId((id+1)%3);
+    },2000);
+  },[id]);
+
   return (
     <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
       <div className="carousel-inner">
-        <div className="carousel-item active">
-          <img src="https://timelinecovers.pro/facebook-cover/download/straight-kick-from-a-soccer-athlete-facebook-cover.jpg" className="d-block w-100" style={{ height: "35vh" }} alt="Soccer Kick" />
+        <div className={id==0?"carousel-item active":"carousel-item"}>
+          <img src="img2.jpg" className="d-block w-100" style={{ height: "40vh" }} alt="Soccer Kick" />
         </div>
-        <div className="carousel-item">
-          <img src="..." className="d-block w-100" alt="..." />
+        <div className={id==1?"carousel-item active":"carousel-item"}>
+          <img src="athlete.jpg" className="d-block w-100" style={{ height: "40vh" }} alt="..." />
         </div>
-        <div className="carousel-item">
-          <img src="..." className="d-block w-100" alt="..." />
+        <div className={id==2?"carousel-item active":"carousel-item"}>
+          <img src="soccerball.jpg" className="d-block w-100" style={{ height: "40vh" }} alt="..." />
         </div>
       </div>
     </div>

@@ -3,18 +3,20 @@
     padding: 0;
 }
 :root{
-    --color:#4f4f4f;
+    --color:purple;
     --height:8vh;
 }
 #logo{
+    margin: 0px;
+    margin-bottom: 2px;
     color: aliceblue;
+    background-color: purple;
     font-weight: lighter;
     font-size: 2em;
-    width: 10vw;
+    width: 100vw;
     height: var(--height);
-    font-family: system-ui, 'Segoe UI','Open Sans', 'Helvetica Neue', sans-serif;
-    padding: 2px;
-    font-weight: bold;
+    font-family: 'Segoe UI','Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bolder;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,27 +24,29 @@
 NavLink{
     text-decoration: none;
 }
-.item{
+.item {
     text-transform: capitalize;
     box-sizing: border-box;
     background: var(--color);
     background-repeat: no-repeat;
     height: var(--height);
-    width: 18vw;
+    width: 100px; /* Adjusted width */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: whitesmoke;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    color: white;
     font-size: medium;
 }
+
+
 .nav-container{
     box-sizing: border-box;
     width: 100%;
     height: var(--height);
     background: var(--color);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 }
 .item:hover{
