@@ -19,6 +19,7 @@
     border: 1px solid #ccc; /* Adds a border */
     width: 300px; /* Sets the width of the input */
     font-size: 16px; /* Sets the font size */
+    background-color: none;
 }
 
 .search-box:focus {
@@ -32,6 +33,7 @@
     border-radius: 20px;
     border: 1px solid #ccc;
     font-size: 16px;
+    background-color: none;
 }
 
 /* Optional: Style the placeholder text */
@@ -49,7 +51,7 @@
 .search-button {
     background:none;
     margin: 0;
-    border-color: none;
+    border:none;
 
 }
 
@@ -63,11 +65,13 @@
 }
 
 .search-button:hover {
-    background-color: #e0e0e0; /* Darker background color on hover */
+    filter: invert(); /* Darker background color on hover */
 }
 
-.card-container{
+.card-container {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     align-items: center;
+    max-width: 100%; /* Account for margin on .card */
 }

@@ -1,0 +1,88 @@
+
+@layer tailwind-base, primereact, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+.booking-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container{
+    text-align: left;
+}
+
+
+.pricing{
+    background-color: red;
+}
+
+.btn{
+    border: 2px;
+    border-color: black;
+    text-align: center;
+}
+
+.btn-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container header{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 200;
+    height: 40px;
+}
+
+.container footer{
+    height: 40px;
+}
+.nb{
+    border: none;
+    border-color: none;
+    border-width: 0px;
+}
+
+.price-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.price-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.price-value {
+    font-style: italic;
+    font-size: large;
+    font-weight: bolder;
+}
+
+
+
+.rating-custom{
+    border: none;
+
+}
+.card{
+    --bs-card-border-color:none
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

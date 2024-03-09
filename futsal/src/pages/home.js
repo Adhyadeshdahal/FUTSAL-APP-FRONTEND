@@ -5,7 +5,7 @@ export default function Home() {
   let [cards,setCards]=useState([]);
   const onSearchClick = ()=>{
     setTimeout(()=>{
-      setCards([1,2,3]);
+      setCards([1,2]);
       console.log(cards);
     },1000)
     
@@ -44,20 +44,36 @@ function SearchButton({click}) {
 
 function NoOpBox(){
   return(
-    <div style={{height:"10vh",width:"100%"}}></div>
+    <div style={{height:"15vh",width:"100%"}}></div>
   )
 }
 
 function Cards({cardTitle}){
   return(
-    <div className="card" style={{width: "18rem"}}>
-  <img src="..." class="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">{cardTitle}</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" className="btn btn-primary">Go somewhere</a>
+   
+    <div
+    class="block rounded-lg bg-white shadow-secondary-1 dark:bg-surface-dark w-80">
+    <a href="#!">
+      <img
+        class="rounded-t-lg"
+        src="https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg"
+        alt="" />
+    </a>
+    <div class="p-6 text-surface dark:text-white">
+      <h5 class="mb-2 text-xl font-medium leading-tight">Card title</h5>
+      <p class="mb-4 text-base text-black">
+        Some quick example text to build on the card title and make up the
+        bulk of the card's content.
+      </p>
+      <button
+        type="button"
+        class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+        data-twe-ripple-init
+        data-twe-ripple-color="light">
+        Button
+      </button>
+    </div>
   </div>
-</div>
   )
 }
 
@@ -68,7 +84,7 @@ function Carousel() {
   useEffect(()=>{
     setTimeout(()=>{
       setActiveId((id+1)%3);
-    },2000);
+    },2555);
   },[id]);
 
   return (

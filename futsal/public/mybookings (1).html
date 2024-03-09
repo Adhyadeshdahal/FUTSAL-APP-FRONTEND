@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fafafa;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: #000;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        /* Add a hover effect to the table rows */
+        tr:hover {
+            background-color: #ddd;
+        }
+        /* Style the sort button and dropdown menu */
+        .sort-button {
+            margin-bottom: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            margin-top: 0;
+        }
+        .dropdown-menu a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+        .sort-button:hover .dropdown-menu, .dropdown-menu:hover{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Bookings</h1>
+        <!-- Add a sort button with a dropdown menu -->
+        <div class="sort-button">
+            <span style="font-size: 2em; vertical-align: middle;">&#9776;</span>
+            Sort by
+            <div class="dropdown-menu">
+                <a href="#" onclick="sortBookings('date')">Date</a>
+                <a href="#" onclick="sortBookings('price')">Price</a>
+            </div>
+        </div>
+        <table id="bookingTable">
+            <tr>
+                <th>Booking ID</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Destination</th>
+                <th>Status</th>
+            </tr>
+            <!-- Bookings will be added here -->
+        </table>
+    </div>
+    <script>
+        var bookings = [
+            { id: 12345,name:'Hamro Futsal', date: '2024-03-08', destination: 'Tokha', status: 'Confirmed' },
+            // Add more bookings here...
+        ];
+
+        var bookingTable = document.getElementById('bookingTable');
+
+        bookings.forEach(function(booking) {
+            var row = document.createElement('tr');
+
+            var idCell = document.createElement('td');
+            idCell.textContent = booking.id;
+            row.appendChild(idCell);
+
+            var name = document.createElement('td');
+            name.textContent = booking.name;
+            row.appendChild(name);
+
+            var dateCell = document.createElement('td');
+            dateCell.textContent = booking.date;
+            row.appendChild(dateCell);
+
+            var destinationCell = document.createElement('td');
+            destinationCell.textContent = booking.destination;
+            row.appendChild(destinationCell);
+
+            var statusCell = document.createElement('td');
+            statusCell.textContent = booking.status;
+            row.appendChild(statusCell);
+
+            bookingTable.appendChild(row);
+        });
+
+        function sortBookings(criteria) {
+            bookings.sort(function(a, b) {
+                if (criteria === 'date') {
+                    return new Date(a.date) - new Date(b.date);
+                } else if (criteria === 'price') {
+                    return a.price - b.price;
+                }
+            });
+            // Clear the table and add the sorted bookings
+            bookingTable.innerHTML = '';
+            bookings.forEach(addBookingToTable);
+        }
+    </script>
+</body>
+</html>

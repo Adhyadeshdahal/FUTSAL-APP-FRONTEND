@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Success</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+        .container {
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .tick {
+            color: #5cb85c;
+            font-size: 100px;
+            animation: bounce 1s ease infinite;
+        }
+        h1 {
+            color: #333;
+            font-weight: 700;
+        }
+        p {
+            color: #666;
+        }
+        #progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+        #progress-bar div {
+            height: 20px;
+            width: 0;
+            background-color: #4CAF50;
+            border-radius: 20px;
+            animation: progress 3s linear forwards;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes progress {
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tick">✔</div>
+        <h1>Payment Successful!</h1>
+        <p>Your payment has been processed successfully.<br> Thank you for your purchase.</p>
+        <div id="progress-bar"><div></div></div>
+    </div>
+    <script>
+        setTimeout(function() {
+            window.location.href = 'homepage.html';
+        }, 3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Success</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+        .container {
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .tick {
+            color: #5cb85c;
+            font-size: 100px;
+            animation: bounce 1s ease infinite;
+        }
+        h1 {
+            color: #333;
+            font-weight: 700;
+        }
+        p {
+            color: #666;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tick">✔</div>
+        <h1>Payment Successful!</h1>
+        <p>Your payment has been processed successfully.<br> Thank you for your purchase.</p>
+        <a href="homepage.html">Return to Homepage</a>
+    </div>
+    <script>
+        setTimeout(function() {
+            window.location.href = 'homepage.html';
+        }, 5000);
+    </script>
+</body>
+</html>

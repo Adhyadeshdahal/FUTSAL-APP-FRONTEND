@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .booking-container {
+            text-align: center;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .booking-container h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .booking-button, .cancel-button {
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .booking-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .cancel-button {
+            background-color: #f44336;
+            color: white;
+        }
+        .booking-button:hover {
+            background-color: #45a049;
+        }
+        .cancel-button:hover {
+            background-color: #d32f2f;
+        }
+        @media (max-width: 600px) {
+            .booking-container {
+                width: 80%;
+            }
+        }
+    </style>
+    <script>
+        function handleButtonClick(buttonType) {
+            if (buttonType === 'book') {
+                // Redirect to success page
+                window.location.href = "success.html";
+            } else if (buttonType === 'cancel') {
+                // Redirect to previous page
+                window.history.back();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="booking-container">
+        <h1>Do you want to Book?</h1>
+        <button class="booking-button" onclick="handleButtonClick('book')">Book Now</button>
+        <button class="cancel-button" onclick="handleButtonClick('cancel')">Cancel</button>
+    </div>
+</body>
+</html>
