@@ -10,6 +10,7 @@ import { ChevronRightIcon } from 'primereact/icons/chevronright';
 import { Rating } from "primereact/rating";
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { Toast } from 'primereact/toast';
+import imageMap from "./image.js";
 import "primereact/resources/themes/bootstrap4-light-purple/theme.css";
 import './Court.css';
 
@@ -21,23 +22,61 @@ import './Court.css';
 
 
 
+export default function Court() {
+    const [futsalData, setFutsalData] = useState(null);
+    const { id } = useParams();
 
-export default function Court(){
-    const [images, setImages] = useState([{itemImageSrc:"https://images.ctfassets.net/hrltx12pl8hq/7JnR6tVVwDyUM8Cbci3GtJ/bf74366cff2ba271471725d0b0ef418c/shutterstock_376532611-og.jpg",
-    thumbnailImageSrc:""},{itemImageSrc:"https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
-    thumbnailImageSrc:""}]);
-    const {id} = useParams();
-    const [value, setValue] = useState(1);
+    useEffect(() => {
+        const fetchFutsalData = async () => {
+            try {
+                const response = await fetch(`http://127.0.0.1:5000/futsals/${id}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const data = await response.json();
+                console.log(data.image_url);
+                setFutsalData({
+                    id: data.id,
+                    name: data.name,
+                    location: data.location,
+                    phoneNumber: data.phone_number,
+                    rating:5,
+                    price: data.price,
+                    imageUrl: data.image_url,
+                    dates: data.dates
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error.message);
+            }
+        };
+    
+        fetchFutsalData();
+    }, [id]);
+
     return (
         <>
-        <BookingSection images={images} value={value} setValue={setValue}/>
-        
+            {futsalData && (
+                <>
+                    <BookingSection
+                        name={futsalData.name}
+                        location={futsalData.location}
+                        phoneNumber={futsalData.phoneNumber}
+                        imageUrl={futsalData.imageUrl}
+                        rating={futsalData.rating}
+                        price={futsalData.price}
+                        dates={futsalData.dates}
+                        futsalId={futsalData.id}
+                    />
+                </>
+            )}
         </>
-    )
-};
+    );
+}
 
-function Gallery({img}) {
-    const [images, setImages] = useState(img);
+
+function Gallery({ images }) {
+    console.log("Images state:", images);
+
     const responsiveOptions = [
         {
             breakpoint: '991px',
@@ -53,113 +92,195 @@ function Gallery({img}) {
         }
     ];
 
-    
-
     const itemTemplate = (item) => {
-        return <img src={item.itemImageSrc} alt={item.alt} style={{ width: '100%' }} />
-    }
-
-    const thumbnailTemplate = (item) => {
-        return <img src={item.thumbnailImageSrc} alt={item.alt} />
-    }
+        item='https://drive.google.com/file/d/1Giyz1XNlM3o3KlLal-vXBy4ZCH3jupby/view?usp=drive_link';
+        return <img src={item} alt="Futsal" style={{ width: '100%' }} />
+    };
 
     return (
         <div className="border-none">
-            <Galleria value={images} style={{ maxWidth: '640px' }} showThumbnails={false} showIndicators item={itemTemplate} showItemNavigators/>
+            {/* <img src="./02.jpg" alt="Futsal" style={{ width: '100%' }} /> */}
+            <Galleria value={images} style={{ maxWidth: '640px' }} showThumbnails={false} showIndicators item={itemTemplate} />
         </div>
-    )
+    );
 }
 
-function NoOpBox(){
-    return(
-      <div style={{height:"15vh",width:"100%"}}></div>
-    )
-  };
 
-const BookingSection = ({images,value,setValue})=>{
-    
+
+const BookingSection = ({ images, value, price, dates, futsalId, name, location, phoneNumber, imageUrl, rating }) => {
     return (
         <>
-        <div className="booking-section">
-            
-        <div class="container text-center">
-                <div class="row" >
-                    <div class="col-8">
-                        <CourtInfo images={images} value={value} setValue={setValue}/>
+            <div className="booking-section">
+                <div className="container text-center">
+                    <div className="row">
+                        <div className="col-8">
+                            <CourtInfo
+                                name={name}
+                                location={location}
+                                phoneNumber={phoneNumber}
+                                imageUrl={imageUrl}
+                                rating={rating}
+                            />
+                        </div>
+                        <div className="col bg">
+                            <Pricing price={price} dates={dates} futsalId={futsalId} />
+                        </div>
                     </div>
-                    <div class="col bg">
-                        <Pricing value={value} setValue={setValue}/>
-                    </div>
-                    </div>
+                </div>
             </div>
-            </div>
-
         </>
-    )
+    );
 };
 
-const CourtInfo = ({images,value,setValue})=>{
-    
+
+const CourtInfo = ({ name, location, phoneNumber, imageUrl, rating }) => {
     return (
         <>
-        <div className="center">
-        <Gallery img={images}/>
-        </div>
-        <div className="container">
-            Rating: <Rating value={value} readOnly cancel={false} />
-        Velit voluptate labore anim nostrud esse ad sint et cupidatat nulla. Elit et aliquip labore enim ut consequat aliquip ex commodo nulla. Quis tempor culpa velit in non excepteur quis. Cillum enim reprehenderit nisi aliquip nostrud culpa magna culpa ex.
-
-Irure sit adipisicing sint in elit occaecat reprehenderit velit ex. Cillum aute culpa ad sit sint. Pariatur irure aute incididunt consequat veniam eiusmod incididunt incididunt. Adipisicing magna occaecat qui eiusmod ut laborum qui irure ut ipsum id aliqua anim sit.
-        </div>
-        
-
-        
+            <div className="center">
+                <img src={imageUrl} alt="Futsal" />
+            </div>
+            <div className="container">
+                <div className="block">
+                    <span className="label">Name:</span> {name}
+                </div>
+                <div className="block">
+                    <span className="label">Location:</span> {location}
+                </div>
+                <div className="block">
+                    <span className="label">Phone Number:</span> {phoneNumber}
+                </div>
+                <div className="block">
+                    <span className="label">Rating:</span> <Rating value={rating} readOnly cancel={false} />
+                </div>
+            </div>
         </>
-    )
-}
+    );
+};
 
-const Pricing = ({value,setValue}) => {
+
+
+const Pricing = ({ price, dates,futsalId }) => {
     const today = new Date();
     const [date, setDate] = useState(today);
-    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    const [dropdown, setDropdown] = useState([{ id: 1, time: "12:00" }]);
-    const [selectedTime,setSelectedTime] = useState(dropdown[0]);
+    const [dropdown, setDropdown] = useState([]);
+    const [selectedTime, setSelectedTime] = useState(null);
+
     const onCalendarClick = (e) => {
         setDate(e.value);
     };
+    useEffect(()=>{
+        console.log(date);
+    },[date]);
 
-    const bookNow = () => {
-        // Redirect to a different location
-        <DeclarativeDemo/>
-        window.location.href = '/confirmation';
+    const fetchTimings = async () => {
+        try {
+            const formattedDate = date.toISOString().split('T')[0];
+            console.log(`http://127.0.0.1:5000/futsals/Timings/${futsalId}/${formattedDate}`);// Format date as 'YYYY-MM-DD'
+            const response = await fetch(`http://127.0.0.1:5000/futsals/Timings/${futsalId}/${formattedDate}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch timings');
+            }
+            const data = await response.json();
+            console.log(data);
+            setDropdown(data.availableTimings || []);
+        } catch (error) {
+            console.error('Error fetching timings:', error.message);
+        }
     };
 
+    useEffect(() => {
+        fetchTimings();
+    }, [date]);
+
+    useEffect(() => {
+        console.log(dropdown);
+        setSelectedTime(dropdown[0]);
+    }, [dropdown]);
+
+    const bookNow = async () => {
+        const authToken = localStorage.getItem('authToken');
+        if (!authToken) {
+            console.error('Authentication token not found');
+            return;
+        }
+    
+        const bookingData = {
+            futsalId: futsalId,
+            date: date.toISOString().split('T')[0],
+            timing: selectedTime
+        };
+    
+        try {
+            const response = await fetch('http://127.0.0.1:5000/Bookings/myBookings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': authToken
+                },
+                body: JSON.stringify(bookingData)
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to book');
+            }
+    
+            // Redirect to a different location
+            window.location.href = '/confirmation';
+        } catch (error) {
+            console.error('Error booking:', error.message);
+        }
+    };
+    
 
     return (
         <div className="container mx-auto px-4 py-8 bg-white shadow-lg rounded-lg">
             <header className="text-center text-3xl font-bold text-gray-800 mb-4">
                 Pricing
-                <PricePanel price={1000}/>
+                <PricePanel price={price}/>
             </header>
             <br></br>
             <div className="flex justify-center items-center mb-4">
-                <Calendar value={date} onChange={onCalendarClick} showIcon />
+                <Calendar value={date} onChange={onCalendarClick} showIcon/>
+            
             </div>
             <div className="flex justify-center items-center mb-4">
-                {
-                    dropdown.length > 0 ? (
-                        <DDropdown drop={dropdown} selectedTime={selectedTime} setSelectedTime={setSelectedTime} />
-                    ) :
-                        "Not Available"
-                }
+                {dropdown.length > 0 ? (
+                    <DDropdown drop={dropdown} selectedTime={selectedTime} setselectedTime={setSelectedTime} />
+
+                ) : (
+                    "Not Available"
+                )}
             </div>
-            Rate: <Rate value={value} setValue={setValue}/>
             <div className="text-center m-4">
-            <Button label="Book Now" raised aria-label="Filter" severity="help" size="large" style={
-                {padding:"5px",
-                fontSize:"25px",
-                borderRadius:"12px"
-        }} onClick={bookNow}/>
+            {dropdown.length>0?<Button
+                    label="Book Now"
+                    raised
+                    aria-label="Filter"
+                    severity="help"
+                    size="large"
+                    style={{
+                        padding: "5px",
+                        fontSize: "25px",
+                        borderRadius: "12px"
+                    }}
+                    onClick={bookNow}
+                    className="custom-book-now-button"
+                />:<Button
+                label="Book Now"
+                raised
+                aria-label="Filter"
+                severity="help"
+                size="large"
+                style={{
+                    padding: "5px",
+                    fontSize: "25px",
+                    borderRadius: "12px",
+                    cursor:"not-allowed"
+                }}
+                
+                className="custom-book-now-button"
+            />}
+                
             </div>
         </div>
     );
@@ -183,17 +304,14 @@ const Pricing = ({value,setValue}) => {
 
 
 function DDropdown({drop,selectedTime,setselectedTime}) {
-    const [time,setTimes] = useState([]);
-    useEffect(()=>{
-        setTimes(drop);
-    },[])
+
 
     const selectedTimeTemplate = (option, props) => {
         if (option) {
             return (
                 <div className="flex align-items-center">
                     {/* <img alt={option.name} src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png" className={`mr-2 flag flag-${option.code.toLowerCase()}`} style={{ width: '18px' }} /> */}
-                    <div>{option.time}</div>
+                    <div>{option}</div>
                 </div>
             );
         }
@@ -205,7 +323,7 @@ function DDropdown({drop,selectedTime,setselectedTime}) {
         return (
             <div className="flex align-items-center">
                 {/* <img alt={option.name} src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png" className={`mr-2 flag flag-${option.code.toLowerCase()}`} style={{ width: '18px' }} /> */}
-                <div>{option.time}</div>
+                <div>{option}</div>
             </div>
         );
     };
@@ -215,7 +333,7 @@ function DDropdown({drop,selectedTime,setselectedTime}) {
             <div className="py-2 px-3">
                 {selectedTime ? (
                     <span>
-                        <b>{selectedTime.time}</b> selected.
+                        <b>{selectedTime}</b> selected.
                     </span>
                 ) : (
                     'No time selected.'
@@ -226,7 +344,7 @@ function DDropdown({drop,selectedTime,setselectedTime}) {
 
     return (
         <div className="card flex justify-content-center sm">
-            <Dropdown value={selectedTime} onChange={(e) => setselectedTime(e.value)} options={time} optionLabel="name" placeholder="Select time" 
+            <Dropdown value={selectedTime} onChange={(e) => setselectedTime(e.value)} options={drop} optionLabel="name" placeholder="Select time" 
                 valueTemplate={selectedTimeTemplate} itemTemplate={timeOptionTemplate} className="w-full md:w-14rem" panelFooterTemplate={panelFooterTemplate} 
                 dropdownIcon={(opts) => {
                     return opts.iconProps['data-pr-overlay-visible'] ? <ChevronRightIcon {...opts.iconProps} /> : <ChevronDownIcon {...opts.iconProps} />;
@@ -250,7 +368,9 @@ const PricePanel = ({ price }) => {
 
 const formatPrice = (price) => {
     // Custom formatting logic
-    return `NPR ${price.toFixed(2)}`; // Example: NPR 123.45
+    
+    const cleanedPrice = price.replace(/\$/g, '').trim();
+    return `NPR ${cleanedPrice}`; // Example: NPR 123.45 // Example: NPR 123.45 // Example: NPR 123.45
 };
 
 

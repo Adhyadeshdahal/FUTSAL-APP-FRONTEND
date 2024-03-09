@@ -14,8 +14,7 @@ import PaymentSuccess from "./pages/confirmatio.jsx";
 
 function App() {
   const [navItems,setNavItems]=useState([
-    {name:"Home",path:"/",class:"pi pi-home"},
-    {name:"Court",path:"/court",class:"pi pi-search"},
+    {name:"Search",path:"/",class:"pi pi-search"},
     {name:"Bookings",path:"/booking",class:"pi pi-heart"},
     {name:"User",path:"/user",class:"pi pi-user"},
   ]);
@@ -54,8 +53,8 @@ function App() {
   height: '20vh',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: 'purple',
-  color: 'white',
+  backgroundColor: '#333',
+  color: 'orange',
 }}>Copyright &copy; myfutsal.com</p>
         </footer>
       </div>

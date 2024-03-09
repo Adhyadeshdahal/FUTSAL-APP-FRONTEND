@@ -9,6 +9,11 @@
   @tailwind components;
   @tailwind utilities;
 }
+.custom-book-now-button:hover {
+    /* Your custom styles for hover state */
+    background-color: #f1f1f1;
+    color: #333;
+}
 
 .booking-section{
     display: flex;

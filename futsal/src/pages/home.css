@@ -1,13 +1,12 @@
 .search-container {
     display: flex;
     position: absolute;
-    left: 25vw;
-    right: 25vw;
+    left: auto;
+    right: auto;
     height: 9vh;
-    width: 40vw;
-    border-radius: 50px;
-    background-color: rgba(237, 240, 241, 0.9);
-    top: 50vh;
+    width: 100vw;
+    background-color: orange;
+    top: 108vh;
     justify-content: space-evenly;
     align-items: center;
 }
@@ -75,3 +74,85 @@
     align-items: center;
     max-width: 100%; /* Account for margin on .card */
 }
+
+
+  .pk{
+    background-color: #0c5fb9; /* Blue */
+    color: #fff; /* White text */
+    border: none; /* Remove border */
+  }
+  .pk:hover{
+    background-color: #0056b3;
+  }
+  
+  .video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    color: white;
+  }
+  
+  .content h3 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .content p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content .btn {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    background-color: orange;
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+  }
+  
+  .content .btn:hover {
+    background-color: rgba(255, 165, 0, 0.8);
+  }
+  
+  .heading {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 4rem;
+  }
+  
+  .heading span {
+    display: inline-block;
+    margin: 0 0.3rem;
+    font-size: 3rem;
+  }
+  
+  .heading .space {
+    display: inline-block;
+    width: 1rem;
+  }
+
+  .cool-component .heading .image{
+    flex:1 1 40rem;
+  }
+  

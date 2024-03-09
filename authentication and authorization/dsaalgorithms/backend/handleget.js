@@ -51,6 +51,14 @@ app.get('/searchByDate/:date', (req, res) => {
     
     const date = req.params.date.replace(/^"|"$/g, '');
     const result = futsalTreeByDate.searchByDate(date);
+    if (req.query.sort) {
+        const sortField = req.query.sort.toLowerCase();
+        if (sortField === 'name') {
+            result = mergeSort(result, 'name');
+        } else if (sortField === 'price') {
+            result = mergeSort(result, 'price');
+        }
+    }
     res.json(result);
 });
 
@@ -59,6 +67,46 @@ app.use("/Bookings",Bookings);
 app.get('/futsals', (req, res) => {
     res.json(futsalData);
 });
+
+app.get('/futsals/:id', (req, res) => {
+    const futsalId = req.params.id;
+    const futsal = futsalData.find((futsal) => futsal.id === futsalId);
+    if (!futsal) {
+        res.status(404).json({ error: 'Futsal not found' });
+        return;
+    }
+    res.json(futsal);
+});
+
+
+app.get('/futsals/Timings/:futsalId/:date', (req, res) => {
+    const futsalId = req.params.futsalId;
+    const date = req.params.date;
+
+    // Construct the path to the timing file
+    const timingFilePath = path.join(__dirname, '../Timings', `${futsalId}.json`);
+
+    // Read the timing file
+    let timingData;
+    try {
+        timingData = JSON.parse(fs.readFileSync(timingFilePath, 'utf8'));
+    } catch (error) {
+        console.error('Error reading timing file:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    // Check if the date exists in the timing data
+    if (!timingData[date]) {
+        return res.status(404).json({ error: 'Date not found' });
+    }
+
+    // Filter out timings that are true for the specified date
+    const availableTimings = Object.entries(timingData[date])
+        .filter(([time, available]) => available)
+        .map(([time]) => time);
+
+    res.json({ availableTimings });
+})
 
 
 

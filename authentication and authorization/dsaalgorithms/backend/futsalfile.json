@@ -11,7 +11,7 @@
       "2024-04-02",
       "2024-04-03"
     ],
-    "image_url": "../dsaalgorithms/images/01.jpg"
+    "image_url": "images/01.jpg"
   },
   {
     "name": "Goal Futsal Club",
@@ -26,7 +26,7 @@
       "2024-04-09",
       "2024-04-10"
     ],
-    "image_url": "../dsaalgorithms/images/02.jpg"
+    "image_url": "images/02.jpg"
   },
   {
     "name": "City Futsal Center",
@@ -41,7 +41,7 @@
       "2024-04-14",
       "2024-04-15"
     ],
-    "image_url": "../dsaalgorithms/images/03.jpg"
+    "image_url": "images/03.jpg"
   },
   {
     "name": "Indoor Soccer Hub",
@@ -56,7 +56,7 @@
       "2024-04-19",
       "2024-04-20"
     ],
-    "image_url": "../dsaalgorithms/images/04.jpg"
+    "image_url": "images/04.jpg"
   },
   {
     "name": "Metro Futsal Park",
@@ -71,7 +71,7 @@
       "2024-04-24",
       "2024-04-25"
     ],
-    "image_url": "../dsaalgorithms/images/05.jpg"
+    "image_url": "images/05.jpg"
   },
   {
     "name": "Downtown Futsal Plaza",
@@ -86,7 +86,7 @@
       "2024-04-29",
       "2024-04-30"
     ],
-    "image_url": "../dsaalgorithms/images/06.jpg"
+    "image_url": "images/06.jpg"
   },
   {
     "name": "Soccer City Futsal Arena",
@@ -101,7 +101,7 @@
       "2024-05-04",
       "2024-05-05"
     ],
-    "image_url": "../dsaalgorithms/images/07.jpg"
+    "image_url": "images/07.jpg"
   },
   {
     "name": "Central Park Futsal Club",
@@ -116,7 +116,7 @@
       "2024-05-09",
       "2024-05-10"
     ],
-    "image_url": "../dsaalgorithms/images/08.jpg"
+    "image_url": "images/08.jpg"
   },
   {
     "name": "Elite Futsal Center",
@@ -131,7 +131,7 @@
       "2024-05-14",
       "2024-05-15"
     ],
-    "image_url": "../dsaalgorithms/images/09.jpg"
+    "image_url": "images/09.jpg"
   },
   {
     "name": "Golden Goal Futsal Arena",
@@ -146,7 +146,7 @@
       "2024-05-19",
       "2024-05-20"
     ],
-    "image_url": "../dsaalgorithms/images/10.jpg"
+    "image_url": "images/10.jpg"
   },
   {
     "name": "Sunset Futsal Park",
@@ -161,7 +161,7 @@
       "2024-05-24",
       "2024-05-25"
     ],
-    "image_url": "../dsaalgorithms/images/11.jpg"
+    "image_url": "images/11.jpg"
   },
   {
     "name": "Dynamic Futsal Club",
@@ -176,7 +176,7 @@
       "2024-05-29",
       "2024-05-30"
     ],
-    "image_url": "../dsaalgorithms/images/12.jpg"
+    "image_url": "images/12.jpg"
   },
   {
     "name": "Thunder Futsal Arena",
@@ -191,7 +191,7 @@
       "2024-06-04",
       "2024-06-05"
     ],
-    "image_url": "../dsaalgorithms/images/13.jpg"
+    "image_url": "images/13.jpg"
   },
   {
     "name": "Victory Futsal Center",
@@ -206,7 +206,7 @@
       "2024-06-09",
       "2024-06-10"
     ],
-    "imageurl": "../dsaalgorithms/images/14.jpg"
+    "image_url": "images/14.jpg"
   },
   {
     "name": "Prime Futsal Hub",
@@ -221,6 +221,6 @@
       "2024-06-14",
       "2024-06-15"
     ],
-    "image_url": "../dsaalgorithms/images/15.jpg"
+    "image_url": "images/15.jpg"
   }
 ]

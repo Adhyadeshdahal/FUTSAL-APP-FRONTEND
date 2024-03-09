@@ -4,7 +4,7 @@ import './PaymentSuccess.css'; // Import your CSS file (if needed)
 function PaymentSuccess() {
   useEffect(() => {
     setTimeout(() => {
-      window.location.href = '/'; // Replace with your desired route
+      window.location.href = '/booking'; // Replace with your desired route
     }, 3000);
   }, []);
 

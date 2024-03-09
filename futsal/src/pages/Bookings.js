@@ -13,9 +13,11 @@ const BookingList = () => {
         setBookings([...bookings].sort((a, b) => new Date(a.date) - new Date(b.date)));
     };
 
-    const byPrice = () => {
-        setBookings([...bookings].sort((a, b) => a.price - b.price));
+    const byFutsal = () => {
+        setBookings([...bookings].sort((a, b) => a.futsalId - b.futsalId));
     };
+    
+    
 
     useEffect(() => {
         async function fetchBookings() {
@@ -60,8 +62,11 @@ const BookingList = () => {
                 throw new Error('Failed to cancel booking');
             }
             // Assuming you want to update the bookings list after cancellation
-            const updatedBookings = bookings.filter(booking => booking.BookingId !== bookingId);
-            setBookings([updatedBookings]);
+            const updatedBookings = bookings.filter(booking => {
+                console.log(booking.bookingId, bookingId);
+                return booking.bookingId !== bookingId
+            });
+            setBookings(updatedBookings);
         } catch (error) {
             console.error('Error cancelling booking:', error.message);
         }
@@ -75,12 +80,12 @@ const BookingList = () => {
               My Bookings
             </h1>
 
-            <div className="sort-button">
-                <span style={{ fontSize: '2em', verticalAlign: 'middle' }}>&#9776;</span>
+            <div className="sort-button" style={{width:"3vw"}}>
+                <span style={{ fontSize: '2em', verticalAlign: 'middle' ,width:"2vw"}}>&#9776;</span>
                 Sort by
                 <div className="dropdown-menu">
                     <a href="#" onClick={byDate}>Date</a>
-                    <a href="#" onClick={byPrice}>Price</a>
+                    <a href="#" onClick={byFutsal}>Futsal</a>
                 </div>
             </div>
             <table className="table table-striped table-bordered">
@@ -100,7 +105,7 @@ const BookingList = () => {
                             <td>{booking.futsalName}</td>
                             <td>{booking.date}</td>
                             <td>{booking.timing}</td>
-                            <td>
+                            <td key={`${booking.BookingId}_${index}`}>
     {new Date().toISOString().split('T')[0] >= booking.date ? (
         <Button
             label="Cancel"

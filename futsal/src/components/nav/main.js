@@ -15,10 +15,8 @@ function Main({navItems,logo}) {
 
     return (
         <div>
-        <header>
-            <h2 id="logo">{logo}<FontAwesomeIcon icon={faFutbol} /></h2>
-        </header>
         <div className='nav-container'>
+        <a href="#" class="logo"><span>F</span>utsal</a>
             {sNavItems.map((item=>{
                 return (
                 <Items item={item} key={item.name}/>
