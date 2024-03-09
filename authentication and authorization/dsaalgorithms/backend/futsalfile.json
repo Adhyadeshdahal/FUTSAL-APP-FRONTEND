@@ -1,0 +1,226 @@
+[
+  {
+    "name": "Futsal Arena",
+    "id": "0",
+    "location": "123 Main Street, Cityville",
+    "phone_number": "+1 123-456-7890",
+    "price": "$20 per hour",
+    "dates": [
+      "2024-03-31",
+      "2024-04-01",
+      "2024-04-02",
+      "2024-04-03"
+    ],
+    "image_url": "../dsaalgorithms/images/01.jpg"
+  },
+  {
+    "name": "Goal Futsal Club",
+    "id": "1",
+    "location": "456 Elm Street, Townsville",
+    "phone_number": "+1 234-567-8901",
+    "price": "$25 per hour",
+    "dates": [
+      "2024-04-06",
+      "2024-04-07",
+      "2024-04-08",
+      "2024-04-09",
+      "2024-04-10"
+    ],
+    "image_url": "../dsaalgorithms/images/02.jpg"
+  },
+  {
+    "name": "City Futsal Center",
+    "id": "2",
+    "location": "789 Oak Street, Villageland",
+    "phone_number": "+1 345-678-9012",
+    "price": "$22 per hour",
+    "dates": [
+      "2024-04-11",
+      "2024-04-12",
+      "2024-04-13",
+      "2024-04-14",
+      "2024-04-15"
+    ],
+    "image_url": "../dsaalgorithms/images/03.jpg"
+  },
+  {
+    "name": "Indoor Soccer Hub",
+    "id": "3",
+    "location": "567 Pine Street, Hamletown",
+    "phone_number": "+1 456-789-0123",
+    "price": "$18 per hour",
+    "dates": [
+      "2024-04-16",
+      "2024-04-17",
+      "2024-04-18",
+      "2024-04-19",
+      "2024-04-20"
+    ],
+    "image_url": "../dsaalgorithms/images/04.jpg"
+  },
+  {
+    "name": "Metro Futsal Park",
+    "id": "4",
+    "location": "890 Maple Street, Suburbia",
+    "phone_number": "+1 567-890-1234",
+    "price": "$23 per hour",
+    "dates": [
+      "2024-04-21",
+      "2024-04-22",
+      "2024-04-23",
+      "2024-04-24",
+      "2024-04-25"
+    ],
+    "image_url": "../dsaalgorithms/images/05.jpg"
+  },
+  {
+    "name": "Downtown Futsal Plaza",
+    "id": "5",
+    "location": "321 Oak Avenue, Metropolis",
+    "phone_number": "+1 678-901-2345",
+    "price": "$30 per hour",
+    "dates": [
+      "2024-04-26",
+      "2024-04-27",
+      "2024-04-28",
+      "2024-04-29",
+      "2024-04-30"
+    ],
+    "image_url": "../dsaalgorithms/images/06.jpg"
+  },
+  {
+    "name": "Soccer City Futsal Arena",
+    "id": "6",
+    "location": "234 Maple Avenue, Megatown",
+    "phone_number": "+1 789-012-3456",
+    "price": "$28 per hour",
+    "dates": [
+      "2024-05-01",
+      "2024-05-02",
+      "2024-05-03",
+      "2024-05-04",
+      "2024-05-05"
+    ],
+    "image_url": "../dsaalgorithms/images/07.jpg"
+  },
+  {
+    "name": "Central Park Futsal Club",
+    "id": "7",
+    "location": "543 Elm Avenue, Riverside",
+    "phone_number": "+1 890-123-4567",
+    "price": "$24 per hour",
+    "dates": [
+      "2024-05-06",
+      "2024-05-07",
+      "2024-05-08",
+      "2024-05-09",
+      "2024-05-10"
+    ],
+    "image_url": "../dsaalgorithms/images/08.jpg"
+  },
+  {
+    "name": "Elite Futsal Center",
+    "id": "8",
+    "location": "678 Pine Avenue, Beachside",
+    "phone_number": "+1 901-234-5678",
+    "price": "$27 per hour",
+    "dates": [
+      "2024-05-11",
+      "2024-05-12",
+      "2024-05-13",
+      "2024-05-14",
+      "2024-05-15"
+    ],
+    "image_url": "../dsaalgorithms/images/09.jpg"
+  },
+  {
+    "name": "Golden Goal Futsal Arena",
+    "id": "9",
+    "location": "456 Oak Avenue, Hilltop",
+    "phone_number": "+1 012-345-6789",
+    "price": "$26 per hour",
+    "dates": [
+      "2024-05-16",
+      "2024-05-17",
+      "2024-05-18",
+      "2024-05-19",
+      "2024-05-20"
+    ],
+    "image_url": "../dsaalgorithms/images/10.jpg"
+  },
+  {
+    "name": "Sunset Futsal Park",
+    "id": "10",
+    "location": "987 Elm Avenue, Lakeside",
+    "phone_number": "+1 234-567-8901",
+    "price": "$21 per hour",
+    "dates": [
+      "2024-05-21",
+      "2024-05-22",
+      "2024-05-23",
+      "2024-05-24",
+      "2024-05-25"
+    ],
+    "image_url": "../dsaalgorithms/images/11.jpg"
+  },
+  {
+    "name": "Dynamic Futsal Club",
+    "id": "11",
+    "location": "890 Pine Avenue, Mountainside",
+    "phone_number": "+1 345-678-9012",
+    "price": "$29 per hour",
+    "dates": [
+      "2024-05-26",
+      "2024-05-27",
+      "2024-05-28",
+      "2024-05-29",
+      "2024-05-30"
+    ],
+    "image_url": "../dsaalgorithms/images/12.jpg"
+  },
+  {
+    "name": "Thunder Futsal Arena",
+    "id": "12",
+    "location": "876 Oak Avenue, Seaside",
+    "phone_number": "+1 456-789-0123",
+    "price": "$31 per hour",
+    "dates": [
+      "2024-06-01",
+      "2024-06-02",
+      "2024-06-03",
+      "2024-06-04",
+      "2024-06-05"
+    ],
+    "image_url": "../dsaalgorithms/images/13.jpg"
+  },
+  {
+    "name": "Victory Futsal Center",
+    "id": "13",
+    "location": "765 Elm Avenue, Countryside",
+    "phone_number": "+1 567-890-1234",
+    "price": "$22 per hour",
+    "dates": [
+      "2024-06-06",
+      "2024-06-07",
+      "2024-06-08",
+      "2024-06-09",
+      "2024-06-10"
+    ],
+    "imageurl": "../dsaalgorithms/images/14.jpg"
+  },
+  {
+    "name": "Prime Futsal Hub",
+    "id": "14",
+    "location": "654 Pine Avenue, Riverside",
+    "phone_number": "+1 678-901-2345",
+    "price": "$25 per hour",
+    "dates": [
+      "2024-06-11",
+      "2024-06-12",
+      "2024-06-13",
+      "2024-06-14",
+      "2024-06-15"
+    ],
+    "image_url": "../dsaalgorithms/images/15.jpg"
+  }
+]
