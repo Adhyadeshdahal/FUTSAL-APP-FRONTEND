@@ -7,10 +7,11 @@ import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { ChevronDownIcon } from 'primereact/icons/chevrondown';
 import { ChevronRightIcon } from 'primereact/icons/chevronright';
-import { Rating } from "primereact/rating";
+
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { Toast } from 'primereact/toast';
 import imageMap from "./image.js";
+import { Rating } from "primereact/rating";
 import "primereact/resources/themes/bootstrap4-light-purple/theme.css";
 import './Court.css';
 
@@ -40,7 +41,7 @@ export default function Court() {
                     name: data.name,
                     location: data.location,
                     phoneNumber: data.phone_number,
-                    rating:5,
+                    rating:data.rating,
                     price: data.price,
                     imageUrl: data.image_url,
                     dates: data.dates
@@ -132,16 +133,26 @@ const BookingSection = ({ images, value, price, dates, futsalId, name, location,
     );
 };
 
+function NoOpBox({height}){
+    return(
+      <div style={{height:height,width:"100%"}}></div>
+    )
+  }
 
 const CourtInfo = ({ name, location, phoneNumber, imageUrl, rating }) => {
+    useEffect(()=>{
+        console.log(imageUrl);
+    },[])
     return (
         <>
+        <NoOpBox height={"1vh"}/>
             <div className="center">
-                <img src={imageUrl} alt="Futsal" />
+                <img src={'/'+imageUrl} alt="Futsal" />
             </div>
+            <NoOpBox height={"15vh"}/>
             <div className="container">
                 <div className="block">
-                    <span className="label">Name:</span> {name}
+                    <span className="label">Name:</span> <strong>{name}</strong>
                 </div>
                 <div className="block">
                     <span className="label">Location:</span> {location}

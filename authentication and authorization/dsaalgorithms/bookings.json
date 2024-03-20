@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "bookingId": 64953,
+    "userId": "65eb0af809469407f879f42b",
+    "futsalId": "1",
+    "date": "2024-04-08",
+    "timing": "03:00"
+  },
+  {
+    "bookingId": 55296,
+    "userId": "65eb0af809469407f879f42b",
+    "futsalId": "1",
+    "date": "2024-04-08",
+    "timing": "12:00"
+  }
+]

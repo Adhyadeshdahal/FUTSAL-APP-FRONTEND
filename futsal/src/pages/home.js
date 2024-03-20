@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import { Rating } from "primereact/rating";
+import "primereact/resources/themes/bootstrap4-light-purple/theme.css";
 import './home.css';
 
 export default function Home() {
@@ -80,7 +81,7 @@ export default function Home() {
       <div className='card-container'>
       {cards.length === 0 ? <CoolComponent /> : (
         cards.map((card) => (
-          <Cards cardTitle={card.name} id={card.id} key={card.id} img={card.image_url} />
+          <Cards cardTitle={card.name} id={card.id} key={card.id} img={card.image_url} rating={card.rating} price={card.price}/>
         ))
       )}
       <NoOpBox/>
@@ -181,7 +182,7 @@ function NoOpBox(){
 
 
 
-function Cards({ cardTitle, id,img}) {
+function Cards({ cardTitle, id,img,rating,price}) {
   return (
     <div className="block rounded-lg bg-white shadow-secondary-1 dark:bg-surface-dark w-80">
       <NavLink to={`/Court/${id}`}>
@@ -190,8 +191,10 @@ function Cards({ cardTitle, id,img}) {
       <div className="p-6 text-surface dark:text-white">
         <h5 className="mb-2 text-xl font-medium leading-tight" style={{color:"black"}}>{cardTitle}</h5>
         <p className="mb-4 text-base text-black">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec semper enim.
+        <Rating value={rating} readOnly cancel={false}/>
+        Price:{price.replace(/\$/g, '').trim()}
         </p>
+
         
           <button
             type="button"

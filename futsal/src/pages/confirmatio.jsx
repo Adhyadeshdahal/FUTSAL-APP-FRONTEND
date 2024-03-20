@@ -12,8 +12,8 @@ function PaymentSuccess() {
     <div className="masc" style={{marginTop:"3rem"}}>
         <div className="container">
       <div className="tick">✔</div>
-      <h1>Payment Successful!</h1>
-      <p>Your payment has been processed successfully.<br /> Thank you for your purchase.</p>
+      <h1>Booking Successful!</h1>
+      <p>Your Booking has been saved successfully.<br /> Thank you for your purchase.</p>
       <div id="progress-bar"><div></div></div>
     </div>
     </div>

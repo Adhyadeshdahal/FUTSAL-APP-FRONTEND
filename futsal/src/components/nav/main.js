@@ -16,7 +16,7 @@ function Main({navItems,logo}) {
     return (
         <div>
         <div className='nav-container'>
-        <a href="#" class="logo"><span>F</span>utsal</a>
+        <a href="/" class="logo"><span>F</span>utsal</a>
             {sNavItems.map((item=>{
                 return (
                 <Items item={item} key={item.name}/>
