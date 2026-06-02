@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const {mergeSort,merge} = require('../mergeSort');
-const {Node,AVLTree} = require('../AVL');
-const { SearchByName } = require('../searchByName');
-const { SearchByDate } = require('../searchByDate'); 
-const Bookings = require('../bookings.js');
+const {mergeSort,merge} = require('./mergeSort');
+const {Node,AVLTree} = require('./AVL');
+const { SearchByName } = require('./searchByName');
+const { SearchByDate } = require('./searchByDate'); 
+const Bookings = require('./bookings.js');
 const path = require('path');
 const fs = require('fs');
 
@@ -84,7 +84,7 @@ app.get('/futsals/Timings/:futsalId/:date', (req, res) => {
     const date = req.params.date;
 
     // Construct the path to the timing file
-    const timingFilePath = path.join(__dirname, '../Timings', `${futsalId}.json`);
+    const timingFilePath = path.join(__dirname, 'Timings', `${futsalId}.json`);
 
     // Read the timing file
     let timingData;

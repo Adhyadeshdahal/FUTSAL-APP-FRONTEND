@@ -1,11 +1,11 @@
-const auth = require('./middleware/auth');
+const auth = require('../middleware/auth');
 const express = require('express');
-const User = require('./user.js');
+const User = require('../models/user.js');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 
-router.use('/uploads', express.static('uploads'));
+router.use('/uploads', express.static(path.join(__dirname, '../../uploads')));
 
 router.get('/', auth, async (req, res) => {
     try {
@@ -30,7 +30,7 @@ router.get('/avatar/:userId', async (req, res) => {
         }
 
         // Serve the avatar file
-        const imagePath = path.join(__dirname, user.avatar);
+        const imagePath = path.join(__dirname, '../../', user.avatar);
         if (!fs.existsSync(imagePath)) {
             return res.status(404).send('Avatar file not found');
         }

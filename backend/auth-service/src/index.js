@@ -1,11 +1,12 @@
 const express = require('express');
-const register = require('./register.js');
+const register = require('./routes/register.js');
 const mongoose = require('mongoose');
-const auth = require('./auth.js');
+const auth = require('./routes/auth.js');
 const app = express();
 const cors = require('cors');
-const me = require('./me.js');
+const me = require('./routes/me.js');
 const port = 1000;
+process.env.NODE_CONFIG_DIR = process.env.NODE_CONFIG_DIR || require('path').join(__dirname, '../config');
 const config = require("config");
 // Middleware to parse JSON bodies
 app.use(express.json());

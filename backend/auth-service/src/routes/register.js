@@ -1,11 +1,12 @@
 const express = require('express');
-const User = require('./user.js');
+const User = require('../models/user.js');
 const _ = require('lodash');
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
+const path = require('path');
 const router = express.Router();
 
 //validation
@@ -19,7 +20,7 @@ const userSchema = Joi.object({
 // Multer configuration for file upload
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/')
+        cb(null, path.join(__dirname, '../../uploads'))
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname)

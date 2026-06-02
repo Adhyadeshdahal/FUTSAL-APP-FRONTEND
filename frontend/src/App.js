@@ -4,7 +4,7 @@ import Main from "./components/nav/main.js";
 import Home from "./pages/home.js";
 import Court from "./pages/Court.js";
 import Bookings from "./pages/Bookings.js";
-import Login from "./pages/user/src/Login.js";
+import Login from "./features/auth/Login.js";
 import User from "./pages/User.js";
 import PaymentSuccess from "./pages/confirmatio.jsx";
 

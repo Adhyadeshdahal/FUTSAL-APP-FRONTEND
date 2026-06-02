@@ -3,7 +3,7 @@ const {makeTimingUnavailable,makeTimingAvailable}= require('./timings_rw.js');
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const auth = require('../middleware/auth');
+const auth = require('../../auth-service/src/middleware/auth');
 
 // Load futsal data from JSON file
 const futsalFilePath = path.join(__dirname, 'futsalfile.json');
