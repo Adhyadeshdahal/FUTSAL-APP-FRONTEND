@@ -46,7 +46,7 @@ router.post('/', upload.single('avatar'), async (req, res) => {
         user.password = await bcrypt.hash(user.password, salt);
         await user.save();
 
-        const token = jwt.sign({ _id: user._id }, config.get('jwtPrivateKey'));
+        const token = jwt.sign({ _id: user._id }, process.env.JWT_PRIVATE_KEY || config.get('jwtPrivateKey'));
 
         res.header('x-auth-token', token).setHeader('Access-Control-Expose-Headers', 'x-auth-token').send(_.pick(user, ['_id', 'name', 'email', 'avatar']));
 

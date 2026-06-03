@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AUTH_API_URL } from "../../config/api";
 
 function SignUpForm({ setIsLoggedIn }) {
   const [state, setState] = useState({
@@ -28,7 +29,7 @@ function SignUpForm({ setIsLoggedIn }) {
       formData.append('password', password);
       formData.append('avatar', avatar);
 
-      const response = await fetch("http://127.0.0.1:1000/api/register", {
+      const response = await fetch(`${AUTH_API_URL}/api/register`, {
         method: "POST",
         body: formData
       });

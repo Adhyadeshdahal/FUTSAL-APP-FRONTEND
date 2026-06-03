@@ -1,13 +1,13 @@
 # MyFutsal
 
-MyFutsal is a futsal court booking app built with React and two small Express APIs. Users can sign up, sign in, search futsal courts by name or date, view court details, book available time slots, and manage their bookings.
+MyFutsal is a full-stack futsal court booking app built with React and two Express APIs. Users can sign up, sign in, search futsal courts by name or available date, view court details, reserve time slots, and manage their bookings.
 
 ## Tech Stack
 
 - Frontend: React, Create React App, React Router, Bootstrap, PrimeReact
 - Backend: Node.js, Express
-- Database: MongoDB for user/auth data
-- File storage: JSON files for futsal listings, timings, and bookings
+- Database: MongoDB for user/auth data, MySQL for futsal courts, time slots, and bookings
+- Seed data: JSON files are kept only for initial MySQL seeding
 - Auth: JWT stored by the frontend and sent with `x-auth-token`
 
 ## Project Structure
@@ -23,7 +23,7 @@ FUTSAL-APP-FRONTEND/
 |       `-- pages/            # Main app pages
 |-- backend/
 |   |-- auth-service/         # Auth/user/avatar API on port 1000
-|   |-- futsal-service/       # Search/booking/futsal API on port 5000
+|   |-- futsal-service/       # MySQL-backed search/booking/futsal API on port 5000
 |   `-- package.json          # Backend scripts and dependencies
 |-- data-structures/          # Older standalone DSA reference code
 |-- docs/
@@ -37,7 +37,8 @@ FUTSAL-APP-FRONTEND/
 Install these before running the project:
 
 - Node.js and npm
-- MongoDB running locally on `mongodb://127.0.0.1:27017/myFutsal`
+- MongoDB running locally or hosted
+- MySQL running locally or hosted
 
 ## Setup
 
@@ -55,9 +56,30 @@ cd backend
 npm install
 ```
 
+Create local environment files:
+
+```bash
+cd backend
+cp .env.example .env
+```
+
+```bash
+cd frontend
+cp .env.example .env
+```
+
+Update `backend/.env` with your MongoDB, MySQL, JWT, and frontend URL values. Update `frontend/.env` with the public URLs for your backend APIs.
+
+Create and seed the MySQL database:
+
+```bash
+cd backend
+npm run seed:mysql
+```
+
 ## Running the App
 
-Start MongoDB first.
+Start MongoDB and MySQL first.
 
 Start the auth service:
 
@@ -148,17 +170,29 @@ Endpoints used by the frontend:
 - `POST /Bookings/myBookings`
 - `DELETE /Bookings/myBookings/:bookingId`
 
-This service reads court data from `futsalfile.json`, booking data from `bookings.json`, and available slot data from the `Timings/` folder.
+This service stores court data, available slots, and bookings in MySQL. The old JSON files are used only by the seed script.
 
 ## Environment Notes
 
-The auth service currently uses the `config` package. The default config lives at:
+Backend environment variables live in `backend/.env`:
 
-```text
-backend/auth-service/config/default.json
-```
+- `FRONTEND_URL`
+- `JWT_PRIVATE_KEY`
+- `MONGO_URI`
+- `MYSQL_HOST`
+- `MYSQL_PORT`
+- `MYSQL_USER`
+- `MYSQL_PASSWORD`
+- `MYSQL_DATABASE`
+- `AUTH_SERVICE_PORT`
+- `FUTSAL_SERVICE_PORT`
 
-For local development, it includes a JWT key so the app can run. For production, do not commit real secrets. Set the JWT key through environment configuration instead.
+Frontend environment variables live in `frontend/.env`:
+
+- `REACT_APP_AUTH_API_URL`
+- `REACT_APP_FUTSAL_API_URL`
+
+For production, do not commit real secrets. Use your hosting provider's environment variable manager.
 
 ## Useful Commands
 
@@ -184,8 +218,24 @@ npm run start:auth
 npm run start:futsal
 ```
 
+Seed MySQL:
+
+```bash
+cd backend
+npm run seed:mysql
+```
+
+## Publishing / Deployment
+
+For deployment, host the three runtime parts separately or as two backend services plus one static frontend:
+
+- Frontend: build with `npm run build` inside `frontend/` and deploy the generated `frontend/build/` folder to Netlify, Vercel, Render Static Sites, S3, or any static host.
+- Auth API: deploy `backend/auth-service/src/index.js` as a Node service and set `MONGO_URI`, `JWT_PRIVATE_KEY`, `FRONTEND_URL`, and `AUTH_SERVICE_PORT`.
+- Futsal API: deploy `backend/futsal-service/src/index.js` as a Node service and set MySQL variables, `JWT_PRIVATE_KEY`, `FRONTEND_URL`, and `FUTSAL_SERVICE_PORT`.
+- Database: use a hosted MongoDB provider for auth data and a hosted MySQL provider for futsal bookings.
+- Frontend API URLs: set `REACT_APP_AUTH_API_URL` and `REACT_APP_FUTSAL_API_URL` before building the frontend.
+
 ## Notes For Future Cleanup
 
-- The frontend still calls fixed local API URLs like `http://127.0.0.1:5000` and `http://127.0.0.1:1000`. Moving those into environment variables would make deployment easier.
-- The futsal service still stores bookings and slot availability in JSON files. A database would be safer for concurrent booking updates.
+- Upgrade `multer` to v2 and resolve npm audit findings before production use.
 - `data-structures/` and `docs/legacy-html/` are preserved for reference, but they are not part of the runtime app.

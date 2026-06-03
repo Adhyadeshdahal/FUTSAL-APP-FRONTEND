@@ -1,4 +1,5 @@
 import React from "react";
+import { AUTH_API_URL } from "../../config/api";
 
 function SignInForm() {
   const [state, setState] = React.useState({
@@ -25,7 +26,7 @@ function SignInForm() {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:1000/api/auth", {
+      const response = await fetch(`${AUTH_API_URL}/api/auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

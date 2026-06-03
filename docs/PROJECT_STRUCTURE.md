@@ -11,7 +11,7 @@ FUTSAL-APP-FRONTEND/
 │   │   │   ├── models/
 │   │   │   └── routes/
 │   │   └── uploads/
-│   ├── futsal-service/      # Express futsal search/booking API on port 5000
+│   ├── futsal-service/      # MySQL-backed futsal search/booking API on port 5000
 │   │   └── src/
 │   └── package.json
 ├── frontend/                # Create React App frontend
@@ -39,6 +39,7 @@ npm start
 ```bash
 cd backend
 npm install
+npm run seed:mysql
 npm run start:auth
 npm run start:futsal
 ```

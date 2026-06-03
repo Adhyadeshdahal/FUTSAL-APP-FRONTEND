@@ -14,6 +14,7 @@ import imageMap from "./image.js";
 import { Rating } from "primereact/rating";
 import "primereact/resources/themes/bootstrap4-light-purple/theme.css";
 import './Court.css';
+import { FUTSAL_API_URL } from '../config/api';
 
 // function MyComponent() {
 //   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export default function Court() {
     useEffect(() => {
         const fetchFutsalData = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:5000/futsals/${id}`);
+                const response = await fetch(`${FUTSAL_API_URL}/futsals/${id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
@@ -186,8 +187,8 @@ const Pricing = ({ price, dates,futsalId }) => {
     const fetchTimings = async () => {
         try {
             const formattedDate = date.toISOString().split('T')[0];
-            console.log(`http://127.0.0.1:5000/futsals/Timings/${futsalId}/${formattedDate}`);// Format date as 'YYYY-MM-DD'
-            const response = await fetch(`http://127.0.0.1:5000/futsals/Timings/${futsalId}/${formattedDate}`);
+            console.log(`${FUTSAL_API_URL}/futsals/Timings/${futsalId}/${formattedDate}`);// Format date as 'YYYY-MM-DD'
+            const response = await fetch(`${FUTSAL_API_URL}/futsals/Timings/${futsalId}/${formattedDate}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch timings');
             }
@@ -222,7 +223,7 @@ const Pricing = ({ price, dates,futsalId }) => {
         };
     
         try {
-            const response = await fetch('http://127.0.0.1:5000/Bookings/myBookings', {
+            const response = await fetch(`${FUTSAL_API_URL}/Bookings/myBookings`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
         if(!isValidPassword){
             return res.status(400).send('Invalid email or password');
         }
-        const token =jwt.sign({_id:user.id},config.get('jwtPrivateKey'));
+        const token =jwt.sign({_id:user.id}, process.env.JWT_PRIVATE_KEY || config.get('jwtPrivateKey'));
         res.header('x-auth-token', token).setHeader('Access-Control-Expose-Headers', 'x-auth-token').send(_.pick(user, ['_id', 'name', 'email', 'avatar']));
 
     } catch (err) {

@@ -5,6 +5,7 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeicons/primeicons.css';
 
 import './bookings.css';
+import { FUTSAL_API_URL } from '../config/api';
 
 const BookingList = () => {
     const [bookings, setBookings] = useState([]);
@@ -25,7 +26,7 @@ const BookingList = () => {
                 // Retrieve the token from local storage
                 const authToken = localStorage.getItem('authToken');
 
-                const response = await fetch('http://127.0.0.1:5000/Bookings/myBookings', {
+                const response = await fetch(`${FUTSAL_API_URL}/Bookings/myBookings`, {
                     headers: {
                         'x-auth-token': authToken,
                         'Content-Type': 'application/json'
@@ -51,7 +52,7 @@ const BookingList = () => {
             // Retrieve the token from local storage
             const authToken = localStorage.getItem('authToken');
     
-            const response = await fetch(`http://127.0.0.1:5000/Bookings/myBookings/${bookingId}`, {
+            const response = await fetch(`${FUTSAL_API_URL}/Bookings/myBookings/${bookingId}`, {
                 method: 'DELETE',
                 headers: {
                     'x-auth-token': authToken,

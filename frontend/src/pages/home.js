@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Rating } from "primereact/rating";
 import "primereact/resources/themes/bootstrap4-light-purple/theme.css";
 import './home.css';
+import { FUTSAL_API_URL } from '../config/api';
 
 export default function Home() {
   const [cards, setCards] = useState([]);
@@ -21,9 +22,9 @@ export default function Home() {
   const handleSearch = async () => {
     let apiEndpoint = '';
     if (searchMethod === 'name') {
-      apiEndpoint = `http://127.0.0.1:5000/searchByName/${searchValue}`;
+      apiEndpoint = `${FUTSAL_API_URL}/searchByName/${encodeURIComponent(searchValue)}`;
     } else if (searchMethod === 'date') {
-      apiEndpoint = `http://127.0.0.1:5000/searchByDate/${searchValue}`;
+      apiEndpoint = `${FUTSAL_API_URL}/searchByDate/${encodeURIComponent(searchValue)}`;
     }
 
     if (sortField) {

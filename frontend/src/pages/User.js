@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
 import { ConfirmPopup, confirmPopup } from 'primereact/confirmpopup';
 import "primereact/resources/themes/bootstrap4-light-purple/theme.css";
+import { AUTH_API_URL } from '../config/api';
 
 export default function User({logOut}) {
     const [usr,setUsr]=useState();
@@ -10,7 +11,7 @@ export default function User({logOut}) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:1000/me', {
+                const response = await fetch(`${AUTH_API_URL}/me`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -41,7 +42,7 @@ export default function User({logOut}) {
                 const userId = usr.user._id;
     
                 try {
-                    const response = await fetch(`http://localhost:1000/me/avatar/${userId}`, {
+                    const response = await fetch(`${AUTH_API_URL}/me/avatar/${userId}`, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'image/jpeg',
